@@ -1,0 +1,19 @@
+#!/usr/bin/python3
+import os
+import sys
+import subprocess
+
+def getClipboardData():
+
+    p = subprocess.Popen(['pbpaste'], stdout=subprocess.PIPE)
+
+    retcode = p.wait()
+
+    data = p.stdout.read()
+
+    return data.decode("utf-8")
+
+curl_code = getClipboardData()
+curl_code = curl_code.replace('"', '\\\"')
+
+os.system('curlconverter -l python "' + curl_code + '"')
