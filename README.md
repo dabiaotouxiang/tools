@@ -16,6 +16,7 @@ get the curl code in Clipboard and translate it to python requests
 6. select the `Copy as cURL`
 7. open the terminal
 8. type `pb_c2q`
+9. then the python_code in Clipboard，`super + v`
 ### why
 1. when the curl code has both `'` and `"`,the curlconverter will report error
     ```

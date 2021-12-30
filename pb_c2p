@@ -12,7 +12,19 @@ def getClipboardData():
 
     return data.decode("utf-8")
 
+def setClipboardData(data):
+
+    p = subprocess.Popen(['pbcopy'], stdin=subprocess.PIPE)
+
+    p.stdin.write(data)
+
+    p.stdin.close()
+
+    p.communicate()
+
 curl_code = getClipboardData()
 curl_code = curl_code.replace('"', '\\\"')
 
-os.system('curlconverter -l python "' + curl_code + '"')
+python_code = os.popen('curlconverter -l python "' + curl_code + '"').read()
+
+setClipboardData(python_code.encode())
